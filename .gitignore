@@ -1,0 +1,24 @@
+# Unity auto-generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Visual Studio / Rider / VSCode files
+*.csproj
+*.sln
+*.sln.*
+.vscode/
+*.pidb
+*.unityproj
+*.user
+*.userprefs
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+
+# Build outputs
+[Bb]uild/
+[Bb]uilds/

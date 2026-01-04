@@ -1,36 +1,37 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Manager : MonoBehaviour
 {
-    bool gameHasEnded=false;
-public float restartDelay=10f;
-    public static Manager instance;
+    public GameObject levelComplete;
+    bool gameHasEnded = false;
 
-void Awake()
-{
-    if (instance == null)
+    void Start()
     {
-        instance = this;
-        // Optional: DontDestroyOnLoad(gameObject);
+        // Hide panel at game start
+        levelComplete.SetActive(false);
     }
-    else
-    {
-        Destroy(gameObject);
-    }
-}
 
     public void EndGame()
     {
-        if (gameHasEnded == false)
+        if (!gameHasEnded)
         {
-          gameHasEnded=true;
-          Debug.Log("GAME IS OVER")  ;
-        Invoke("Restart",restartDelay);
+            gameHasEnded = true;
+            Debug.Log("GAME IS OVER");
+            levelComplete.SetActive(true);
+            Time.timeScale = 0f; // Pause game
         }
     }
 
-    void Restart()
+    public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    internal void completeLevel()
+    {
+        throw new NotImplementedException();
     }
 }
